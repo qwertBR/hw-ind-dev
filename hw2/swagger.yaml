@@ -1,0 +1,99 @@
+openapi: 3.0.1
+info:
+  title: OpenAPi config for HW-2
+  description: This is the OpenAPI config that goes with out server code
+  contact:
+    email: warlockmikhail@gmail.com
+  version: 1.0.0
+servers:
+  - url: https://localhost:1234/api/v1
+paths:
+  /hello:
+    get:
+      tags:
+        - task1
+      summary: Returns greetings
+      description: When toggled - returns "Hse One Love!"
+      operationId: controllers.controller.hello_handler
+      responses:
+        200:
+          description: Ok
+          content:
+            text/plain:
+              schema:
+                type: string
+
+  /set:
+    post:
+      tags:
+        - task2
+      summary: Append new value into dictionary
+      description: Create and append key-value pair into dictionary
+      operationId: controllers.controller.set_handler
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                key:
+                  type: string
+                value:
+                  type: string
+        required: true
+      responses:
+        200:
+          description: Ok
+          content: {}
+
+  /get/{key}:
+    get:
+      tags:
+        - task2
+      summary: Read particular value
+      description: Read particular value by key
+      operationId: controllers.controller.get_handler
+      parameters:
+        - name: key
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  key:
+                    type: string
+                  value:
+                    type: string
+
+  /divide:
+    post:
+      tags:
+        - task3
+      summary: Add
+      description: Add
+      operationId: controllers.controller.divide_handler
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dividend:
+                  type: integer
+                divider:
+                  type: integer
+        required: true
+      responses:
+        200:
+          description: Ok
+          content:
+            text/plain:
+              schema:
+                type: string
