@@ -1,10 +1,10 @@
 import json
-from flask import abort, make_response, jsonify
+from flask import abort, make_response, jsonify, request, Response
 from db import DB
 
 
 def hello_handler():
-    return make_response("Hse One Love!", 200)
+    return Response(response="Hse One Love!", status=200, mimetype="text/plain")
 
 
 def get_handler(key):
@@ -22,4 +22,4 @@ def set_handler(body: json):
 
 
 def divide_handler(body: json):
-    return make_response(body["divident"] / body["divider"], 200)
+    return make_response(str(body["dividend"] / body["divider"]), 200)
