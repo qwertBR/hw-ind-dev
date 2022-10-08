@@ -1,3 +1,4 @@
+#слишком большой класс
 class Game:
     def __init__(self, field_size: int):
         self.size = field_size
@@ -32,7 +33,7 @@ class Game:
                     return True
 
         return False
-
+    #непонятное название
     def is_gewonnen(self, placed_symbol: str) -> bool:
         for row in range(self.size):
             for column in range(self.size):
@@ -40,7 +41,7 @@ class Game:
                     return True
         return False
 
-    def is_free_cells_exists(self) -> bool:
+    def is_ not_free_cells_exists(self) -> bool:
         for row in self.field:
             for column in row:
                 if column == ".":
